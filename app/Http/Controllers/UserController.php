@@ -29,7 +29,7 @@ class UserController extends Controller
         $token = $user->createToken('MyAppToken')->plainTextToken;
 
         return response()->json(['user' => $user, 'token' => $token], 201);
-    } catch (\Illuminate\Validation\ValidationException $e) {
+    } catch (ValidationException $e) {
         // Validation error occurred
         return response()->json(['error' => $e->validator->errors()->first()], 422);
     } catch (\Exception $e) {

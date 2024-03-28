@@ -33,10 +33,10 @@ class BusinessCardController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = Auth::id();
-        if (!$userId) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-        }
+        $userId = $request->user()->id;
+        // if (!$userId) {
+        //     return response()->json(['error' => 'Unauthenticated.'], 401);
+        // }
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -75,14 +75,14 @@ class BusinessCardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BusinessCard $businessCard)
     {
-        $userId = Auth::id();
-        if (!$userId) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-        }
+        // $userId = Auth::id();
+        // if (!$userId) {
+        //     return response()->json(['error' => 'Unauthenticated.'], 401);
+        // }
 
-        $businessCard = BusinessCard::where('user_id', $userId)->findOrFail($id);
+        // $businessCard = BusinessCard::where('user_id', $userId)->findOrFail($id);
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',

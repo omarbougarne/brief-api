@@ -13,10 +13,11 @@ class BusinessCard extends Model
     protected $table = 'business_cards';
 
     protected $fillable = [
+        'user_id',
         'name',
         'company',
         'title',
-        'adress',
+        'address',
     ];
     public function user()
 {
