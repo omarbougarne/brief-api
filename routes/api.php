@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BusinessCardController;
 use App\Http\Controllers\UserController;
 
+Route::get('/api-docs', 'App\Http\Controllers\BusinessCardController@swagger');
+
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
